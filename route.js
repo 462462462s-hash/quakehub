@@ -101,7 +101,7 @@ async function scrapeReliefWeb(query) {
 async function scrapeGDACS(query) {
   const results = [];
   try {
-    const api = `https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventtype=EQ&fromDate=2024-01-01&toDate=2099-01-01&alertlevel=Green;Orange;Red&limit=10&keyword=${encodeURIComponent(query)}`;
+    const api = `https://gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventtype=EQ&fromDate=2024-01-01&toDate=2099-01-01&alertlevel=Green;Orange;Red&limit=10&keyword=${encodeURIComponent(query)}`;
     const res = await withTimeout(fetch(api, { headers: { Accept: 'application/json' } }), 6000);
     if (!res.ok) return results;
     const data = await res.json();
@@ -109,7 +109,7 @@ async function scrapeGDACS(query) {
     for (const ev of events.slice(0, 4)) {
       const p = ev.properties || ev;
       const title = p.name || p.eventname || p.description || '';
-      const url = p.url?.report || p.link || `https://www.gdacs.org/Alerts/default.aspx?eventid=${p.eventid}&eventtype=EQ`;
+      const url = p.url?.report || p.link || `https://gdacs.org/Alerts/default.aspx?eventid=${p.eventid}&eventtype=EQ`;
       if (title && url) results.push(buildArticle(title, url, null, 'GDACS (UN)'));
     }
   } catch (e) {

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://your-domain.com"; // ← replace with your real production domain
+const SITE_URL = "https://earthwatch-iihz-azure.vercel.app"; // ← replace with your real production domain
 const SITE_NAME = "Quake Hub — Live Earthquake Monitor";
 const SITE_DESCRIPTION =
   "Real-time global earthquake monitoring powered by official USGS data. Track live seismic activity, magnitude, depth, tsunami risk, and breaking news for earthquakes happening right now anywhere in the world.";
